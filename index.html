@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+<headead>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://bootswatch.com/4/cyborg/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="https://bootswatch.com/5/cyborg/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
+
+  <script src="main.js" defer></script>
+</headead>
+<body>
+  <style  type="text/css">
+    @media print{
+        .btn{
+             display: none;
+        }
+        #noprint { display:none; } 
+      a:link{font:15px "verdana"; color:#8B4513; text-decoration:none;}
+
+a:hover{font:20px "verdana"; color:black; text-decoration:underline;}
+    }
+      </style>
+  <div class="py-5" id="tabela">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-primary" id="cadastrar">
+          <i class="fa fa-fw fa-1x py-1 fa-plus" ></i> Adicionar</button>
+        </div>
+        <div class="table-responsive my-2" >
+            <table class="table table-striped table-borderless" id="tabela">
+              <thead>
+                <tr>
+                  <th scope="col">Funcionario</th>
+                  <th scope="col">Departamento</th>
+                  <th scope="col">Referencia</th>
+                  <th scope="col">Salario</th>
+                  <th scope="col">Editar</th>
+                  <th scope="col">Excluir</th>
+                  <th scope="col">Ver</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="py-5 d-none" id="formulario">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header d-flex justify-content-between">
+                <h5> Cadastro/Alteração </h5>
+                <div>
+                  <a class="btn btn-primary" id="salvar"><i class="fa fa-download fa-fw"></i>&nbsp;Salvar</a>
+                  <a class="btn btn-primary" id="cancelar"><i class="fa fa-download fa-fw"></i>&nbsp;Cancelar</a>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <form id="form">
+                    <label>Razão Social</label>
+                    <input type="text" id="razaoSocial" class="form-control" placeholder="Razão Social" required="">
+                    <label>CNPJ</label>
+                    <input type="text" id="cnpj" class="form-control" placeholder="CNPJ" required="">
+                    <label>Departamento</label>
+                    <input type="text" id="departamento" class="form-control" placeholder="departamento" required="">
+                    <label>Refência</label>
+                    
+                    <input type="date" id="data" class="form-control" placeholder="Mês" required="">
+                    <label>Nome Funcionario</label>
+                    <input type="text" id="nome" class="modificavel form-control a" data-index="new" placeholder="Nome Funcionario" required="">
+                    <label>Salario (R$)</label>
+                    <input type="text" id="salario" class="form-control a" placeholder="Salário" required="">
+                    <label>Referencia (Dias)</label>
+                    <input type="number"  id="diasreferenciasalario" class="modificavel form-control a" placeholder="Referencia em Dias" required="">
+                    <label>Carga Horaria Mês (hrs)</label>
+                    <input type="number"  id="cargahoraria" class="modificavel form-control a" placeholder="Carga Horaria" required="">
+                    <label>Hora Extra 50% (hrs)</label>
+                    <input type="number" id="diasextra50" class="modificavel form-control a" placeholder="Hrs hora Extra" required="">
+                    <label>Hora Extra 100% (hrs)</label>
+                    <input type="number" id="diasextra100" class="modificavel form-control a" placeholder="Hrs hora Extra" required="">
+                    <label>ADICIONAL NOTURNO (Dias)</label>
+                    <input type="number" id="diasadicionalnoturno" class="modificavel form-control a" placeholder="Dias Adicional Norutno" required="">
+                    <label>SALARIO FAMILIA (Quant)</label>
+                    <input type="number" id="quantdependente" class="modificavel form-control a" placeholder="Quantidade de Dependentes" required="">
+                    <label>ADIANTAMENTO (R$)</label>
+                    <input type="text" id="adiantamentos" class="modificavel form-control a" placeholder="Adiantamento ou Vale" required="">
+                    <label>FALTAS/ATRASOS (Dias)</label>
+                    <input type="number" id="diasfaltas" class="modificavel form-control a" placeholder="Dias de Falta ou atraso" required="">
+                    <label>DSR FALTAS/ATRASOS (Dias)</label>
+                    <input type="number" id="dsedias" class="modificavel form-control a" placeholder="DSR Dias Descontado" required="">
+                    <label>INSS (%)</label>
+                    <input type="text" id="inss" class="modificavel form-control a" placeholder="INSS" required="">
+                    <label>IRRF (%)</label>
+                    <input type="text" id="irrf" class="modificavel form-control a" placeholder="%IRR" required="">
+                    <label>Desconto vt (%)</label>
+                    <input type="text" id="vt" class="modificavel form-control a" placeholder="%Vale Transporte" required="">
+                    <label>Desconto vr (%)</label>
+                    <input type="text" id="vr" class="modificavel form-control a" placeholder="%Vale Refeição" required="">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="py-5  d-none" id="holerit">
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-md-12">
+            <button class="btn btn-primary" id="vertabela">
+              <i class="fa fa-fw fa-1x py-1 fa-arrow-left" ></i> 
+              Voltar
+            </button>
+            <button class="btn btn-success" onClick="window.print()">
+              <i class="fa fa-fw fa-1x py-1 fa-print" ></i> 
+              Imprimir
+            </button>
+            <div class="table-responsive">
+              <table class="table">
+                <thead class="">
+                  <tr>
+                    <th colspan="3" id="razaososcial_">Arsenal System SA</th>
+                    <th colspan="3" rowspan="2" class="text-center">
+                      <h3> Recebido de Pagamento de Salario </h3>
+                      <p id="data_"> Mes de Referencia </p>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th colspan="3" id="cnpj_">CNPJ</th>
+                  </tr>
+                  <tr>
+                    <th>Código</th>
+                    <th colspan="2">Nome Funcionario</th>
+                    <th colspan="3">Departamento</th>
+                  </tr>
+                  <tr>
+                    <th>1000</th>
+                    <th colspan="2" id="nomefuncionario_">Nome do Funcionario</th>
+                    <th colspan="3" id="departamento_">Nome Departamento</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th>Cód</th>
+                    <td colspan="2">Descrição</td>
+                    <td>Referência</td>
+                    <td>Vencimentos</td>
+                    <td>Descontos</td>
+                  </tr>
+                  <tr>
+                    <th>1001</th>
+                    <td colspan="2 text-uppercase">SALARIO DO EMPREGADO</td>
+                    <td id="diassalario_">1</td>
+                    <td id="salario_">R$ 0,00</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th>1002</th>
+                    <td colspan="2 text-uppercase">HORA EXTRA (50%)</td>
+                    <td id="extra50_">1</td>
+                    <td id="extra50_vlr">R$ 0,00</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th>1003</th>
+                    <td colspan="2 text-uppercase">HORA EXTRA (100%)</td>
+                    <td id="extra100_">1</td>
+                    <td id="extra100_vlr">R$ 0,00</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th>1004<br></th>
+                    <td colspan="2 text-uppercase">ADICIONAL NOTURNO</td>
+                    <td id="adicionalnoturno_">1</td>
+                    <td id="adicionalnoturno_vlr">R$ 0,00</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th>1005</th>
+                    <td colspan="2 text-uppercase">SALARIO FAMILIA</td>
+                    <td id="salariofamilia_">0</td>
+                    <td id="salariofamilia_valor">R$ 0,00</td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <th>1006<br></th>
+                    <td colspan="2 text-uppercase">ADIANTAMENTO</td>
+                    <td>1</td>
+                    <td></td>
+                    <td id="adiantamento_">R$ 0,00</td>
+                  </tr>
+                  <tr>
+                    <th>1007</th>
+                    <td colspan="2 text-uppercase">FALTAS/ATRASOS</td>
+                    <td id="faltasatrasos_">1</td>
+                    <td></td>
+                    <td id="faltasatrasos_valor">R$ 0,00</td>
+                  </tr>
+                  <tr>
+                    <th>1008</th>
+                    <td colspan="2 text-uppercase">DSR FALTAS/ATRASOS</td>
+                    <td style="" id="dse_">1</td>
+                    <td></td>
+                    <td id="dse_valor">R$ 0,00</td>
+                  </tr>
+                  <tr>
+                    <th>1009</th>
+                    <td colspan="2 text-uppercase">INSS</td>
+                    <td id="inss_">1</td>
+                    <td></td>
+                    <td id="inss_valor">R$ 0,00</td>
+                  </tr>
+                  <tr>
+                    <th>1010</th>
+                    <td colspan="2 text-uppercase">IRRF</td>
+                    <td id="irrf_">1</td>
+                    <td></td>
+                    <td id="irrf_valor">R$ 0,00</td>
+                  </tr>
+                  <tr>
+                    <th>1011</th>
+                    <td colspan="2 text-uppercase" contenteditable="true">DESCONTO VT</td>
+                    <td id="vt_">1</td>
+                    <td></td>
+                    <td id="vt_valor">R$ 0,00</td>
+                  </tr>
+                  <tr>
+                    <th>1012</th>
+                    <td colspan="2 text-uppercase">DESCONTO VR</td>
+                    <td id="vr_">1</td>
+                    <td></td>
+                    <td id="vr_valor">R$ 0,00</td>
+                  </tr>
+                  <tr>
+                    <th colspan="4"></th>
+                    <td>Total Vencimentos</td>
+                    <td>Total Descontos</td>
+                  </tr>
+                  <tr>
+                    <th colspan="4"></th>
+                    <th id="somatotalvencimentos_">R$ 0,00</th>
+                    <th id="totaldescontos">R$ 0,00</th>
+                  </tr>
+                  <tr>
+                    <th colspan="4"></th>
+                    <td>Valor Liquido</td>
+                    <th id="totalliquido">R$ 0,00</th>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td>Salario Base</td>
+                    <td>Sal. Contr. INSS</td>
+                    <td>Base Cálc. FGTS</td>
+                    <td>FGTS do Mês</td>
+                    <td>Case Cál. IRRF</td>
+                    <td>Faixa IRRF</td>
+                  </tr>
+                  <tr>
+                    <td id="salariobase_">R$ 0,00</td>
+                    <td id="somatotalvencimentoss_">R$ 0,00</td>
+                    <td id="somatotalvencimentosss_">R$ 0,00</td>
+                    <td id="valor_inss">R$ 0,00</td>
+                    <td id="basecalculo_irrf">R$ 0,00</td>
+                    <td>1</td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+<!-- precisa estar na sequencia -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="jquery.mask.js"></script>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#cnpj').mask('00.000.000/0000-00', {reverse: true});
+    $('#salario').mask("#.##0,00", {reverse: true});
+    $('#adiantamentos').mask("#.##0,00", {reverse: true});
+    $('#inss').mask('##0,00%', {reverse: true});
+    $('#irrf').mask('##0,00%', {reverse: true});
+    $('#vt').mask('##0,00%', {reverse: true});
+    $('#vr').mask('##0,00%', {reverse: true});
+    $('#dinheiro').mask("#.##0,00", {reverse: true});
+  }); 
+</script>
